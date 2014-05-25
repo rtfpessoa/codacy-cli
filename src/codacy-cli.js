@@ -7,10 +7,10 @@ program.version(appVersion);
 program.usage('[options] <arg ...>');
 
 program
-  .option('-c, --config [file]', 'Add the specified config file')
-  .option('-o, --output [format]', 'Configure output format. Choices are "json", "table" and "raw". Defaults to "raw".')
+  .option('-c, --config [file]', 'Load the specified configuration file')
+  .option('-o, --output [format]', 'Select the output format. Choices are "json", "table" and "raw". Defaults to "raw".')
   .option('-p, --project [id]', 'View project issues')
-  .option('-a, --analyse [file]', 'Analyse the specified file or path');
+  .option('-a, --analyse [file]', 'Analyse the specified file or directory');
 
 program.on('--help', function() {
   console.log('For support, email team@codacy.com');
