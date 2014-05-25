@@ -8,6 +8,20 @@ Codacy CLI, Automated Code Linting and Monitoring
 
 Codacy is a ...
 
+#### Usage
+
+  Usage: codacy [options] <arg ...>
+
+  Options:
+
+    -h, --help             output usage information
+    -V, --version          output the version number
+    -c, --config [file]    Add the specified config file
+    -o, --output [format]  Configure output format. Choices are "json", "table" and "raw". Defaults to "raw".
+    -p, --project [id]     View project issues
+    -a, --analyse [file]   Analyse the specified file or path
+
+For support, email team@codacy.com
 
 #### License
 

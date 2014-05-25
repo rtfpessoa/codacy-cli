@@ -1,74 +1,85 @@
-module.exports = (function () {
-    "use strict";
+module.exports = (function() {
+  "use strict";
 
-    var fs = require("fs");
-    var prompt = require("prompt");
+  var fs = require("fs");
+  var prompt = require("sync-prompt").prompt;
 
-    function Config() {
-        prompt.message = "";
-        prompt.delimiter = ":";
-        prompt.colors = false;
-        prompt.start();
+  var defaultConfigFile = ".codacy";
+
+  function Config() {}
+
+  Config.prototype.readConfig = function(configFilePath) {
+    var options = null;
+
+    options = readConfigFromFile(defaultConfigFile);
+    if (options) {
+      return options;
     }
 
-    Config.prototype.readConfig = function (configFilePath) {
-        if (!configFilePath) {
-            return readConfigFromInput();
-        }
-
-        return readConfigFromFile(configFilePath);
-    };
-
-    function readConfigFromFile(path) {
-        try {
-            var data = fs.readFileSync(path);
-
-            if (!data) {
-                console.error("Config file is empty");
-                process.exit(1);
-            }
-
-            return JSON.parse(data);
-        }
-        catch (e) {
-            console.error(e.message);
-            process.exit(1);
-        }
+    options = readConfigFromFile(configFilePath);
+    if (options) {
+      return options;
     }
 
-    function readConfigFromInput() {
-        prompt.get({
-            properties: {
-                clientId: {
-                    description: "clientId",
-                    required: true
-                },
-                secretId: {
-                    description: "secretId",
-                    required: true,
-                    hidden: true
-                }}
-        }, function (err, result) {
-
-            if (result.clientId && result.secretId) {
-                console.log("Performing authentication with codacy...");
-            } else {
-                error("Failed to get user credentials");
-                exit(1);
-            }
-        });
+    options = readConfigFromInput();
+    if (options) {
+      return options;
     }
 
-    var instance;
+    console.error("Could not load any configuration");
+    exit(2);
+  };
 
-    function getInstance() {
-        if (instance === undefined) {
-            instance = new Config();
-            instance.constructor = null;
+  function readConfigFromInput() {
+    var apiToken = prompt('Insert your api token:');
+
+    return createConfig(apiToken);
+  }
+
+  function readConfigFromFile(path) {
+    if (fs.existsSync(path)) {
+      var fileContent = fs.readFileSync(path);
+
+      try {
+        var optionsJson = JSON.parse(fileContent);
+        if (checkConfig(optionsJson)) {
+          return optionsJson;
         }
-        return instance;
+      } catch (e) {
+        console.error(e.message);
+      }
+
+      console.error("Could not load config file '%s'", path);
     }
 
-    return getInstance();
+    return null;
+  }
+
+  function checkConfig(options) {
+    if (!options || !options.apiToken) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function createConfig(apiToken) {
+    var options = {};
+    options.apiToken = apiToken;
+
+    return options;
+  }
+
+  var instance;
+
+  function getInstance() {
+    if (instance === undefined) {
+      instance = new Config();
+      instance.constructor = null;
+    }
+    return instance;
+  }
+
+  return getInstance();
 
 })();
