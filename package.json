@@ -1,0 +1,32 @@
+{
+    "name": "codacy-cli",
+    "version": "0.1.0",
+    "description": "CLI tool for Codacy",
+    "main": "codacy",
+    "scripts": {
+        "test": ""
+    },
+    "engines": {
+        "node": ">=0.10"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Caxaria/Codacy-CLI.git"
+    },
+    "preferGlobal": "true",
+    "bin": {
+        "codacy": "codacy-cli.js"
+    },
+    "dependencies": {
+    },
+    "keywords": [
+        "codacy",
+        "cli"
+    ],
+    "author": "João Caxaria (http://www.codacy.com/)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://www.codacy.com/"
+    },
+    "homepage": "https://www.codacy.com/"
+}
