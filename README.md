@@ -3,7 +3,7 @@
 
 \[ [Use it online](https://www.codacy.com) • [Features](https://www.codacy.com/features) •
 [Pricing](https://www.codacy.com/pricing) • [About us](https://www.codacy.com/about) •
-[GitHub](https://www.github.com) • [Blog](http://blog.codacy.com) •
+[GitHub](https://www.github.com/codacy) • [Blog](http://blog.codacy.com) •
 [Twitter](https://twitter.com/codacy/) \]
 
 Codacy is a hosted automated code review service.
