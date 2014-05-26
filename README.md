@@ -6,7 +6,9 @@
 [GitHub](https://www.github.com) • [Blog](http://blog.codacy.com) •
 [Twitter](https://twitter.com/codacy/) \]
 
-Codacy is a ...
+Codacy is a hosted automated code review service.
+
+Codacy automatically applies some patterns to your project and grades it so you can take a first glance of its health. We'll also provide you with all the detailed information required to improve it, effectively helping you tackle your technical debt.
 
 #### Generate Token
 
