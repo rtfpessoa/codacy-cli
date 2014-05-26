@@ -1,5 +1,5 @@
-Codacy CLI, Automated Code Linting and Monitoring
---------------------------------------------------
+### Codacy Command Line Interface (CLI)
+# Automated Code Linting and Monitoring
 
 \[ [Use it online](https://www.codacy.com) • [Features](https://www.codacy.com/features) •
 [Pricing](https://www.codacy.com/pricing) • [About us](https://www.codacy.com/about) •
@@ -7,6 +7,22 @@ Codacy CLI, Automated Code Linting and Monitoring
 [Twitter](https://twitter.com/codacy/) \]
 
 Codacy is a ...
+
+#### Generate Token
+
+Go to your [account](https://www.codacy.com/account#ApiTokens) and click generate.
+Then you can load your token with one of the following methods:
+* Default configuration file `.codacy`
+
+* Custom configuration file with `-c` or `--config`
+
+* Introduce it interactively in the CLI when requested
+
+###### Configuration File Example
+
+      {
+        "apiToken":"**************"
+      }
 
 #### Usage
 

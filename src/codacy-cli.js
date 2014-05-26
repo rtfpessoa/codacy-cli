@@ -4,7 +4,7 @@ var program = require('commander');
 var appVersion = module.exports.version;
 
 program.version(appVersion);
-program.usage('[options] <arg ...>');
+program.usage('[options]');
 
 program
   .option('-c, --config [file]', 'Load the specified configuration file')

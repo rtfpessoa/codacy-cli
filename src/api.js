@@ -5,13 +5,16 @@ module.exports = (function() {
   var http = require('http-sync');
 
   var timeoutMilliseconds = 10000;
-  /* TODO: add production settings
-    var requestOptions = {
-        protocol: 'https',
-        host: 'www.codacy.com',
-        port: 80
-    };
-    */
+  /*var requestOptions = {
+    protocol: 'https',
+    host: 'www.codacy.com',
+    port: 443
+  };
+  var requestOptions = {
+    protocol: 'https',
+    host: 'integration.codacy.com',
+    port: 443
+  };*/
   var requestOptions = {
     protocol: 'http',
     host: 'localhost',
