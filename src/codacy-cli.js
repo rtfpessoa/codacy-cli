@@ -18,14 +18,15 @@ program.on('--help', function() {
 
 program.parse(process.argv);
 
-main();
-
-function main() {
+function getConfig() {
   var configFilePath = program.config;
-
   var config = require('./config.js');
-  var options = config.readConfig(configFilePath);
 
+  return config.readConfig(configFilePath);
+}
+
+function prepareResponse(program) {
+  var options = getConfig();
   var api = require('./api.js')(options.apiToken);
 
   var result;
@@ -37,11 +38,21 @@ function main() {
   } else {
     result = api.getProjects();
   }
+
+  return result;
+}
+
+function main(program) {
+  var result = prepareResponse(program);
+
   if (result) {
     var formatter = require('./formatter.js')(program.output);
     formatter.print(result);
   } else {
     program.help();
   }
+
   process.exit(0);
 }
+
+main(program);
