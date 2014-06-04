@@ -1,3 +1,22 @@
 node_modules/
 npm-debug.log
 
+# Intellij
+logs
+project/project
+project/target
+target
+tmp
+.history
+dist
+/.idea
+/*.iml
+.cache
+/out
+/.idea_modules
+.classpath
+.project
+/RUNNING_PID
+/.settings
+.DS_Store
+*.iml
