@@ -10,6 +10,10 @@ Codacy is a hosted automated code review service.
 
 Codacy automatically applies some patterns to your project and grades it so you can take a first glance of its health. We'll also provide you with all the detailed information required to improve it, effectively helping you tackle your technical debt.
 
+#### Quick Install
+Run
+* npm install codacy-cli
+
 #### Generate Token
 
 Go to your [account](https://www.codacy.com/account#ApiTokens) and click generate.
