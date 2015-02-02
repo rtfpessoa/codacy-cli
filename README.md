@@ -12,7 +12,7 @@ Codacy automatically applies some patterns to your project and grades it so you 
 
 #### Quick Install
 Run
-* npm install codacy-cli
+* npm install -g codacy-cli
 
 #### Generate Token
 
