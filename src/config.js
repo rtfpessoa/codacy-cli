@@ -1,4 +1,4 @@
-module.exports = (function() {
+module.exports = (function () {
   "use strict";
 
   var fs = require("fs");
@@ -6,9 +6,10 @@ module.exports = (function() {
 
   var defaultConfigFile = ".codacy";
 
-  function Config() {}
+  function Config() {
+  }
 
-  Config.prototype.readConfig = function(configFilePath) {
+  Config.prototype.readConfig = function (configFilePath) {
     var options = null;
 
     options = readConfigFromFile(defaultConfigFile);

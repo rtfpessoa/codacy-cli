@@ -1,15 +1,24 @@
-module.exports = (function() {
+module.exports = (function () {
   "use strict";
 
   var extend = require('extend');
   var http = require('http-sync');
 
   var timeoutMilliseconds = 10000;
-  var requestOptions = {
+
+  var remoteRequestOptions = {
     protocol: 'https',
     host: 'www.codacy.com',
     port: 443
   };
+
+  //var localRequestOptions = {
+  //  protocol: 'http',
+  //  host: 'localhost',
+  //  port: 9000
+  //};
+
+  var requestOptions = remoteRequestOptions;
 
   var apiToken;
   var cookie;
@@ -17,15 +26,19 @@ module.exports = (function() {
 
   function CodacyAPI(_apiToken) {
     apiToken = _apiToken;
-
     user = performLogin();
   }
 
+  /*
+   * Codacy API V1
+   */
+
+  // TODO: remove (deprecated)
   function makeRequest(options) {
     try {
       var request = http.request(extend(requestOptions, options));
 
-      request.setTimeout(timeoutMilliseconds, function() {
+      request.setTimeout(timeoutMilliseconds, function () {
         console.error("Request timeout: " + requestOptions.path);
         process.exit(1);
       });
@@ -54,10 +67,9 @@ module.exports = (function() {
       return JSON.parse(response.toString());
     }
 
-
   }
 
-  CodacyAPI.prototype.getProjects = function() {
+  CodacyAPI.prototype.getProjects = function () {
     var response = makeRequest({
       method: 'GET',
       headers: {
@@ -75,7 +87,7 @@ module.exports = (function() {
     return JSON.parse(result.ok);
   };
 
-  CodacyAPI.prototype.getProject = function(projectId) {
+  CodacyAPI.prototype.getProject = function (projectId) {
     var response = makeRequest({
       method: 'GET',
       headers: {
@@ -93,7 +105,7 @@ module.exports = (function() {
     return JSON.parse(result.ok);
   };
 
-  CodacyAPI.prototype.analyseFile = function(filename, contents) {
+  CodacyAPI.prototype.analyseFile = function (filename, contents) {
     var response = makeRequest({
       method: 'POST',
       headers: {
@@ -115,9 +127,9 @@ module.exports = (function() {
         return JSON.parse(result.ok);
       } catch (_) {
         /* TODO: do some feedback
-                console.error(e.message);
-                process.exit(1);
-              */
+         console.error(e.message);
+         process.exit(1);
+         */
       }
     }
   };

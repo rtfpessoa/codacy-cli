@@ -1,4 +1,4 @@
-module.exports = (function() {
+module.exports = (function () {
   "use strict";
 
   var tables = require("json-table");
@@ -10,13 +10,40 @@ module.exports = (function() {
     format = _format;
   }
 
-  Formatter.prototype.print = function(data) {
-    if (format === "json") {
-      printJson(data);
-    } else if (format === "table") {
-      printTable(data);
-    } else {
-      console.log(data);
+  Formatter.prototype.print = function (data) {
+    switch (format) {
+      case "json":
+        printJson(data);
+        break;
+      case "table":
+        printTable(data);
+        break;
+      default:
+        console.log(data);
+    }
+  };
+
+  Formatter.prototype.printCommitOverview = function (data) {
+    switch (format) {
+      case "json":
+        printJson(data);
+        break;
+      case "table":
+        if (data.files && data.files.length) {
+          var files = data.files;
+          delete data.files;
+
+          console.log("Commit");
+          printTable(data);
+
+          console.log("Files");
+          printTable(files);
+        } else {
+          printTable(data);
+        }
+        break;
+      default:
+        console.log(data);
     }
   };
 
@@ -25,7 +52,8 @@ module.exports = (function() {
   }
 
   function printTable(json) {
-    var table = new tables(json, function() {});
+    var table = new tables(json, function () {
+    });
     console.log(table.table.toString());
   }
 

@@ -1,4 +1,4 @@
-module.exports = (function() {
+module.exports = (function () {
   "use strict";
 
   var fs = require("fs");
@@ -8,7 +8,7 @@ module.exports = (function() {
     api = _api;
   }
 
-  Analysis.prototype.analyseFile = function(fileToAnalyse) {
+  Analysis.prototype.analyseFile = function (fileToAnalyse) {
     debugger;
     if (fs.existsSync(fileToAnalyse)) {
       // Do something
