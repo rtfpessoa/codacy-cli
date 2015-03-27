@@ -13,10 +13,8 @@ program
   .option('-c, --config [file]', 'Load the specified configuration file')
   .option('-o, --output [format]', 'Select the output format. Choices are "json", "table" and "raw". Defaults to "raw".')
   .option('-l, --projects', 'List projects')
-  .option('-p, --project [id]', 'Set project id')
-  .option('-O, --projectOwner [id]', 'Set project owner')
-  .option('-N, --projectName [id]', 'Set project name')
-  .option('-C, --commit [uuid]', 'Se commit uuid')
+  .option('-p, --project [projectId | <projectOwner,projectName>]', 'View project issues')
+  .option('-C, --commit [uuid]', 'View commit issues (dependsOn: --project)')
   .option('-a, --analyse [file]', 'Analyse the specified file or directory');
 
 program.on('--help', function () {
@@ -32,17 +30,20 @@ function getConfig() {
   return config.readConfig(configFilePath);
 }
 
-function prepareResponse(program) {
+function prepareResponse() {
   var formatter = require('./formatter.js')(program.output);
 
-  if (isSet(program.projectOwner) && isSet(program.projectName) && isSet(program.commit)) {
-    commitByName(formatter, program.projectOwner, program.projectName, program.commit);
+  if (isSet(program.project) && program.project.indexOf(",") !== -1 && isSet(program.commit)) {
+    var params = program.project.split(",");
+    commitByName(formatter, params[0], params[1], program.commit);
   } else if (isSet(program.project) && isSet(program.commit)) {
     commit(formatter, program.project, program.commit);
+  } else if (isSet(program.project) && program.project.indexOf(",") !== -1) {
+    console.log('Project information only available by ID.');
   } else if (isSet(program.project)) {
     project(formatter, program.project);
   } else if (program.analyse) {
-    analyse(formatter, program)
+    analyse(formatter, program.analyse)
   } else if (program.projects) {
     projects(formatter);
   } else {
@@ -70,9 +71,9 @@ function commitByName(formatter, projectOwner, projectName, commitUUID) {
   formatter.printCommitOverview(result);
 }
 
-function analyse(formatter) {
+function analyse(formatter, path) {
   var analysis = require('./analysis.js')(api);
-  var result = analysis.analyseFile(program.analyse);
+  var result = analysis.analyseFile(path);
   formatter.print(result);
 }
 
@@ -80,10 +81,10 @@ function isSet(param) {
   return param && param.length > 0;
 }
 
-function main(program) {
-  prepareResponse(program);
+function main() {
+  prepareResponse();
 
   process.exit(0);
 }
 
-main(program);
+main();

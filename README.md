@@ -34,18 +34,22 @@ Then you can load your token with one of the following methods:
 
     Usage:
       codacy [options]
-
+    
     Options:
-      -h, --help             Output usage information
-      -V, --version          Output the version number
-      -c, --config [file]    Load the specified configuration file
+      -h, --help                                              output usage information
+      -V, --version                                           output the version number
+      -c, --config [file]                                     Load the specified configuration file
       -o, --output [format]  Select the output format
         Formats:
         * raw (default)
         * json
         * table
-      -p, --project [id]     View project issues
-      -a, --analyse [path]   Analyse the specified file or directory
+      -l, --projects                                          List projects
+      -p, --project [projectId | <projectOwner,projectName>]  View project issues
+      -C, --commit [uuid]                                     View commit issues (dependsOn: --project)
+      -a, --analyse [file]                                    Analyse the specified file or directory
+    
+    For support, email team@codacy.com
 
 #### Reporting a bug
 

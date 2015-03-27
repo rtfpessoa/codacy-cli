@@ -6,19 +6,17 @@ module.exports = (function () {
 
   var timeoutMilliseconds = 10000;
 
-  var remoteRequestOptions = {
+  var requestOptions = {
     protocol: 'https',
     host: 'www.codacy.com',
     port: 443
   };
 
-  //var localRequestOptions = {
+  //requestOptions = {
   //  protocol: 'http',
   //  host: 'localhost',
   //  port: 9000
   //};
-
-  var requestOptions = remoteRequestOptions;
 
   var apiToken;
   var cookie;
