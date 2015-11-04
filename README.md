@@ -33,19 +33,23 @@ Then you can load your token with one of the following methods:
 #### Usage
 
     Usage:
-      codacy [options]
-
+        codacy [options]
+    
     Options:
-      -h, --help             Output usage information
-      -V, --version          Output the version number
-      -c, --config [file]    Load the specified configuration file
-      -o, --output [format]  Select the output format
-        Formats:
-        * raw (default)
-        * json
-        * table
-      -p, --project [id]     View project issues
-      -a, --analyse [path]   Analyse the specified file or directory
+        -h, --help                                              output usage information
+        -V, --version                                           output the version number
+        -c, --config [file]                                     load the specified configuration file
+        -o, --output [format]                                   select the output format:
+                                                                    * raw (default)
+                                                                    * json
+                                                                    * table
+        -l, --projects                                          list projects
+        -p, --project [projectId | <projectOwner,projectName>]  view project issues
+        -C, --commit [sha]                                      view commit overview (dependsOn: --project)
+        -D, --delta                                             view commit delta (dependsOn: --commit)
+        -a, --analyse [file]                                    analyse the specified file or directory
+    
+    For support, email team@codacy.com
 
 #### Reporting a bug
 
