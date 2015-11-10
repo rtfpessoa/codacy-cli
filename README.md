@@ -1,6 +1,10 @@
 ### Codacy Command Line Interface (CLI)
 # Automated Code Linting and Monitoring
 
+[![Circle CI](https://circleci.com/gh/codacy/codacy-cli.svg?style=shield)](https://circleci.com/gh/codacy/codacy-cli)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/7cab81e0d23592b83da165cdbf5dd38f)](https://www.codacy.com/app/Codacy/codacy-cli)
+[![NPM](https://nodei.co/npm/codacy-cli.png?compact=true)](https://npmjs.org/package/codacy-cli)
+
 \[ [Use it online](https://www.codacy.com) • [Features](https://www.codacy.com/features) •
 [Pricing](https://www.codacy.com/pricing) • [About us](https://www.codacy.com/about) •
 [GitHub](https://www.github.com/codacy) • [Blog](http://blog.codacy.com) •
@@ -12,7 +16,9 @@ Codacy automatically applies some patterns to your project and grades it so you 
 
 #### Quick Install
 Run
-* [sudo] npm install -g codacy-cli
+```
+[sudo] npm install -g codacy-cli
+```
 
 #### Generate Token
 
