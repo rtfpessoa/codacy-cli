@@ -3,7 +3,7 @@
 
 [![Circle CI](https://circleci.com/gh/codacy/codacy-cli.svg?style=shield)](https://circleci.com/gh/codacy/codacy-cli)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/7cab81e0d23592b83da165cdbf5dd38f)](https://www.codacy.com/app/Codacy/codacy-cli)
-[![NPM](https://nodei.co/npm/codacy-cli.png?compact=true)](https://npmjs.org/package/codacy-cli)
+[![NPM](https://img.shields.io/npm/v/codacy-cli.svg)](https://www.npmjs.com/package/codacy-cli)
 
 \[ [Use it online](https://www.codacy.com) • [Features](https://www.codacy.com/features) •
 [Pricing](https://www.codacy.com/pricing) • [About us](https://www.codacy.com/about) •
