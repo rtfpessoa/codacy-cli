@@ -13,19 +13,14 @@
  *
  */
 
+/**
+ * Args parsing
+ */
+
 require('pkginfo')(module, 'version');
 
 var program = require('commander');
 var appVersion = module.exports.version;
-
-var options = require('./lib/config.js').Config.readConfig(program.config);
-
-var api = new (require('./lib/api.js').CodacyAPI)(options.apiToken);
-var apiv2 = new (require('./lib/apiv2.js').CodacyAPIV2)(options.apiToken);
-
-var formatter = new (require('./lib/formatter.js').Formatter)(program.output);
-
-var analysis = new (require('./lib/analysis.js').Analysis)(api);
 
 program.version(appVersion);
 program.usage('[options]');
@@ -39,11 +34,24 @@ program
   .option('-D, --delta', 'view commit delta (dependsOn: --commit)')
   .option('-a, --analyse [file]', 'analyse the specified file or directory');
 
-program.on('--help', function () {
+program.on('--help', function() {
   console.log('For support, email team@codacy.com');
 });
 
 program.parse(process.argv);
+
+/**
+ * Dependencies
+ */
+
+var options = require('./lib/config.js').Config.readConfig(program.config);
+
+var api = new (require('./lib/api.js').CodacyAPI)(options.apiToken);
+var apiv2 = new (require('./lib/apiv2.js').CodacyAPIV2)(options.apiToken);
+
+var formatter = new (require('./lib/formatter.js').Formatter)(program.output);
+
+var analysis = new (require('./lib/analysis.js').Analysis)(api);
 
 function prepareResponse() {
   if (isTuple(program.project) && program.delta && isSet(program.commit)) {
@@ -108,6 +116,10 @@ function isTuple(param) {
 function isSet(param) {
   return param && param.length > 0;
 }
+
+/**
+ * Main
+ */
 
 function main() {
   prepareResponse();

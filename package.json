@@ -1,6 +1,6 @@
 {
   "name": "codacy-cli",
-  "version": "0.1.2-2",
+  "version": "0.2.0",
   "homepage": "https://www.codacy.com",
   "description": "Command Line Interface(CLI) tool for Codacy",
   "keywords": [
@@ -32,21 +32,18 @@
   "engines": {
     "node": ">=0.10"
   },
-  "preferGlobal": "true",
-  "scripts": {
-    "test": ""
-  },
+  "preferGlobal": true,
   "bin": {
     "codacy": "./bin/codacy-cli"
   },
   "main": "./src/codacy-cli.js",
   "dependencies": {
     "sync-prompt": "0.4.2",
-    "commander": "2.7.1",
-    "extend": "2.0.0",
-    "http-sync": "0.1.1",
+    "commander": "2.9.0",
+    "extend": "3.0.0",
+    "http-sync": "0.1.2",
     "json-table": "0.1.3",
-    "pkginfo": "0.3.0"
+    "pkginfo": "0.3.1"
   },
   "devDependencies": {
   },
